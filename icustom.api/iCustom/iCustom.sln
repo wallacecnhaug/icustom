@@ -3,55 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.api", "icustom.api\icustom.api.csproj", "{AAEDBB7B-6478-49B0-A911-EF6B54DA786E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.infra", "icustom.infra\icustom.infra.csproj", "{795A4920-C35A-4D6C-8FDE-AAFDFB91B91E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.domain", "icustom.domain\icustom.domain.csproj", "{7913AD90-87E2-4C7F-BC14-4DF10884D6D3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.service", "icustom.service\icustom.service.csproj", "{85ADABD1-5F2A-462C-9F5B-6943E13177BD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.context", "icustom.context\icustom.context.csproj", "{2172D118-F6E9-4622-8C88-A01964075DE6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.security.jwt", "icustom.security.jwt\icustom.security.jwt.csproj", "{45AA8491-2609-4323-96FA-80034E30738D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.test.unit", "icustom.test.unit\icustom.test.unit.csproj", "{B4CB8EE8-93F7-47B0-8AA6-FFFD045898DE}"
-EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AAEDBB7B-6478-49B0-A911-EF6B54DA786E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AAEDBB7B-6478-49B0-A911-EF6B54DA786E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AAEDBB7B-6478-49B0-A911-EF6B54DA786E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AAEDBB7B-6478-49B0-A911-EF6B54DA786E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{795A4920-C35A-4D6C-8FDE-AAFDFB91B91E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{795A4920-C35A-4D6C-8FDE-AAFDFB91B91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{795A4920-C35A-4D6C-8FDE-AAFDFB91B91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{795A4920-C35A-4D6C-8FDE-AAFDFB91B91E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7913AD90-87E2-4C7F-BC14-4DF10884D6D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7913AD90-87E2-4C7F-BC14-4DF10884D6D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7913AD90-87E2-4C7F-BC14-4DF10884D6D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7913AD90-87E2-4C7F-BC14-4DF10884D6D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85ADABD1-5F2A-462C-9F5B-6943E13177BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85ADABD1-5F2A-462C-9F5B-6943E13177BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85ADABD1-5F2A-462C-9F5B-6943E13177BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85ADABD1-5F2A-462C-9F5B-6943E13177BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2172D118-F6E9-4622-8C88-A01964075DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2172D118-F6E9-4622-8C88-A01964075DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2172D118-F6E9-4622-8C88-A01964075DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2172D118-F6E9-4622-8C88-A01964075DE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45AA8491-2609-4323-96FA-80034E30738D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45AA8491-2609-4323-96FA-80034E30738D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45AA8491-2609-4323-96FA-80034E30738D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45AA8491-2609-4323-96FA-80034E30738D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4CB8EE8-93F7-47B0-8AA6-FFFD045898DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4CB8EE8-93F7-47B0-8AA6-FFFD045898DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4CB8EE8-93F7-47B0-8AA6-FFFD045898DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4CB8EE8-93F7-47B0-8AA6-FFFD045898DE}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
