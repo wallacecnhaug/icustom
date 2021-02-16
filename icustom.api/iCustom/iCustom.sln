@@ -3,7 +3,49 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.teste.unit", "icustom.teste.unit\icustom.teste.unit.csproj", "{D1AFA5C8-E684-46C6-BE0A-6A8DE9C636D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.dominio", "icustom.dominio\icustom.dominio.csproj", "{D47B14BC-FA8D-4271-931E-EE9F4C725136}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.contexto", "icustom.contexto\icustom.contexto.csproj", "{A5FFF20A-3265-484F-A0CE-5240287B0791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.app.api", "icustom.app.api\icustom.app.api.csproj", "{45E78901-AC79-490B-858E-349FC3972439}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.servico", "icustom.servico\icustom.servico.csproj", "{BDC7D939-E778-4ACE-A64F-2FDE7874861C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.servico.contrato", "icustom.servico.contrato\icustom.servico.contrato.csproj", "{43130C16-A439-4016-8B16-71BD1F9E16AA}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1AFA5C8-E684-46C6-BE0A-6A8DE9C636D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1AFA5C8-E684-46C6-BE0A-6A8DE9C636D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1AFA5C8-E684-46C6-BE0A-6A8DE9C636D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1AFA5C8-E684-46C6-BE0A-6A8DE9C636D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D47B14BC-FA8D-4271-931E-EE9F4C725136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D47B14BC-FA8D-4271-931E-EE9F4C725136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D47B14BC-FA8D-4271-931E-EE9F4C725136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D47B14BC-FA8D-4271-931E-EE9F4C725136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5FFF20A-3265-484F-A0CE-5240287B0791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FFF20A-3265-484F-A0CE-5240287B0791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FFF20A-3265-484F-A0CE-5240287B0791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FFF20A-3265-484F-A0CE-5240287B0791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E78901-AC79-490B-858E-349FC3972439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E78901-AC79-490B-858E-349FC3972439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E78901-AC79-490B-858E-349FC3972439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E78901-AC79-490B-858E-349FC3972439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC7D939-E778-4ACE-A64F-2FDE7874861C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC7D939-E778-4ACE-A64F-2FDE7874861C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC7D939-E778-4ACE-A64F-2FDE7874861C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC7D939-E778-4ACE-A64F-2FDE7874861C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43130C16-A439-4016-8B16-71BD1F9E16AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43130C16-A439-4016-8B16-71BD1F9E16AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43130C16-A439-4016-8B16-71BD1F9E16AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43130C16-A439-4016-8B16-71BD1F9E16AA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

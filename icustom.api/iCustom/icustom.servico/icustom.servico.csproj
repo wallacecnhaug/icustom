@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\icustom.contexto\icustom.contexto.csproj" />
+    <ProjectReference Include="..\icustom.dominio\icustom.dominio.csproj" />
+    <ProjectReference Include="..\icustom.servico.contrato\icustom.servico.contrato.csproj" />
+  </ItemGroup>
+
+</Project>
