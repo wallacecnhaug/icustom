@@ -5,15 +5,19 @@ VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.teste.unit", "icustom.teste.unit\icustom.teste.unit.csproj", "{D1AFA5C8-E684-46C6-BE0A-6A8DE9C636D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.dominio", "icustom.dominio\icustom.dominio.csproj", "{D47B14BC-FA8D-4271-931E-EE9F4C725136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.dominio", "icustom.dominio\icustom.dominio.csproj", "{D47B14BC-FA8D-4271-931E-EE9F4C725136}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.contexto", "icustom.contexto\icustom.contexto.csproj", "{A5FFF20A-3265-484F-A0CE-5240287B0791}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.contexto", "icustom.contexto\icustom.contexto.csproj", "{A5FFF20A-3265-484F-A0CE-5240287B0791}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.app.api", "icustom.app.api\icustom.app.api.csproj", "{45E78901-AC79-490B-858E-349FC3972439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.app.api", "icustom.app.api\icustom.app.api.csproj", "{45E78901-AC79-490B-858E-349FC3972439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.servico", "icustom.servico\icustom.servico.csproj", "{BDC7D939-E778-4ACE-A64F-2FDE7874861C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.servico", "icustom.servico\icustom.servico.csproj", "{BDC7D939-E778-4ACE-A64F-2FDE7874861C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.servico.contrato", "icustom.servico.contrato\icustom.servico.contrato.csproj", "{43130C16-A439-4016-8B16-71BD1F9E16AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.servico.contrato", "icustom.servico.contrato\icustom.servico.contrato.csproj", "{43130C16-A439-4016-8B16-71BD1F9E16AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.infra", "icustom.infra\icustom.infra.csproj", "{251801C5-87C4-49A4-82FB-BE33777BE271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.app.web.angular", "icustom.app.web.angular\icustom.app.web.angular.csproj", "{82B81E44-2206-4069-A33D-F5E7C21B6B1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{43130C16-A439-4016-8B16-71BD1F9E16AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43130C16-A439-4016-8B16-71BD1F9E16AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43130C16-A439-4016-8B16-71BD1F9E16AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{251801C5-87C4-49A4-82FB-BE33777BE271}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{251801C5-87C4-49A4-82FB-BE33777BE271}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{251801C5-87C4-49A4-82FB-BE33777BE271}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{251801C5-87C4-49A4-82FB-BE33777BE271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82B81E44-2206-4069-A33D-F5E7C21B6B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B81E44-2206-4069-A33D-F5E7C21B6B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B81E44-2206-4069-A33D-F5E7C21B6B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B81E44-2206-4069-A33D-F5E7C21B6B1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
