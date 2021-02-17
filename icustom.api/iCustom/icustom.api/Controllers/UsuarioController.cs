@@ -26,7 +26,7 @@ namespace icustom.app.api.Controllers
 
         [HttpPost]
         [AutorizacaoAnonima]
-        public async Task<ActionResult> Adicionar(string login, string nome, string senha)
+        public async Task<ActionResult<string>> Adicionar(string login, string nome, string senha)
         {
             _usuarioServico.Adicionar(
                 new Usuario()
@@ -36,7 +36,7 @@ namespace icustom.app.api.Controllers
                     Senha = senha
                 });
 
-            return Ok();
+            return Ok($"Usuário {login.Trim()}-{nome.Trim()} Cadastrado com sucesso.");
         }
 
         [HttpPost]
