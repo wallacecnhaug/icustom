@@ -33,8 +33,10 @@ namespace icustom.servico
 
             if (usuario != null)
             {
-                token = _autenticacaoServico.GerarToken(login);
+                token = _autenticacaoServico.GerarToken();
             }
+            else
+                throw new KeyNotFoundException("Usuário não encontrado ou senha inválida.");
 
             return token;
         }

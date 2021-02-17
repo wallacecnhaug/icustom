@@ -1,7 +1,6 @@
 ﻿using icustom.contexto.configuracoes;
 using icustom.contexto.contratos;
 using icustom.dominio.entidades;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,7 @@ namespace icustom.contexto
     {
         public iCustomContexto(DbContextOptions options) : base(options)
         {
+
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
@@ -24,6 +24,8 @@ namespace icustom.contexto
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseInMemoryDatabase("InMemoryICUSTOM");
+
             base.OnConfiguring(optionsBuilder);
         }
 

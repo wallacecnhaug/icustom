@@ -6,6 +6,6 @@ namespace icustom.servico.contrato
 {
     public interface IAutenticacaoServico : IBaseServico
     {
-        string GerarToken(string login);
+        string GerarToken();
     }
 }

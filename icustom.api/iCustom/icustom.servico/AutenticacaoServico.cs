@@ -2,37 +2,34 @@
 using icustom.servico.contrato;
 using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 
 namespace icustom.servico
 {
     public class AutenticacaoServico : BaseServico, IAutenticacaoServico
     {
-
-        public string GerarToken(string login)
+        public string GerarToken()
         {
+            var securityKey = new SymmetricSecurityKey(Constantes.Key);
+            var issuer = Constantes.Issuer;
+            var audience = Constantes.Audience;
+            var credentials =
+                new SigningCredentials(
+                    securityKey,
+                    SecurityAlgorithms.HmacSha256);
+
+            var token =
+                new JwtSecurityToken(
+                    issuer: issuer,
+                    audience: audience,
+                    expires: DateTime.Now.AddMinutes(120),
+                    signingCredentials: credentials);
+
             var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenDescriptor = new SecurityTokenDescriptor()
-            {
-                Subject =
-                    new System.Security.Claims.ClaimsIdentity(
-                        new Claim[]
-                            {
-                                new Claim(ClaimTypes.Name, login)
-                            }),
-                Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials =
-                    new SigningCredentials(
-                        new SymmetricSecurityKey(Constantes.key),
-                        SecurityAlgorithms.HmacSha256)
-            };
+            var stringToken = tokenHandler.WriteToken(token);
 
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            return tokenHandler.WriteToken(token);
+            return stringToken;
         }
     }
 }
