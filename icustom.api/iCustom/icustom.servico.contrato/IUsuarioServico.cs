@@ -9,5 +9,7 @@ namespace icustom.servico.contrato
     {
         void Adicionar(Usuario usuario);
         List<Usuario> ObterTodos();
+
+        string Autenticar(string login, string senha);
     }
 }

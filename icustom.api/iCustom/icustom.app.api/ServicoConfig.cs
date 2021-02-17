@@ -19,6 +19,7 @@ namespace icustom.app.api
 
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddScoped<IUsuarioServico, UsuarioServico>();
+            services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
         }
     }
 }

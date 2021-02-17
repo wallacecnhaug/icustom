@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\icustom.contexto\icustom.contexto.csproj" />
     <ProjectReference Include="..\icustom.dominio\icustom.dominio.csproj" />
+    <ProjectReference Include="..\icustom.infra\icustom.infra.csproj" />
     <ProjectReference Include="..\icustom.servico.contrato\icustom.servico.contrato.csproj" />
   </ItemGroup>
 

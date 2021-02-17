@@ -38,7 +38,7 @@ namespace icustom.contexto.repositorios
             return _Comando.Find(id);
         }
 
-        public IList<TEntidade> ObterTodos()
+        public List<TEntidade> ObterTodos()
         {
             return _Comando.ToList();
         }

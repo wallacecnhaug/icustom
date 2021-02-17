@@ -1,4 +1,6 @@
 using icustom.contexto;
+using icustom.infra.configs;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -61,9 +64,57 @@ namespace icustom.app.api
                         });
 
                     c.IncludeXmlComments(caminhoXmlDoc);
+
+                    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                    {
+                        Name = "Authorization",
+                        Type = SecuritySchemeType.ApiKey,
+                        Scheme = "Bearer",
+                        BearerFormat = "JWT",
+                        In = ParameterLocation.Header,
+                        Description = "JWT Authorization header using the Bearer scheme."
+                    });
+
+                    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                    {
+                        {
+                            new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference()
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
+                        }
+                    });
                 });
             }
             #endregion 
+
+            services.AddAuthentication(_ =>
+            {
+                _.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                _.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(_ =>
+            {
+                _.RequireHttpsMetadata = false;
+                _.SaveToken = true;
+                _.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+                {
+                    IssuerSigningKey = new SymmetricSecurityKey(Constantes.key),
+
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true
+
+                    //ValidateIssuerSigningKey = true,
+                    //ValidateIssuer = false,
+                    //ValidateAudience = false
+                };
+            });
 
             ServicoConfig.ConfigurarEscopo(services);
         }
@@ -85,7 +136,16 @@ namespace icustom.app.api
 
             app.UseRouting();
 
+            app.UseCors(_ =>
+            {
+                _.AllowAnyOrigin();
+                _.AllowAnyMethod();
+                _.AllowAnyHeader();
+            });
+
             app.UseAuthorization();
+            app.UseAuthentication();
+
 
             app.UseEndpoints(endpoints =>
             {

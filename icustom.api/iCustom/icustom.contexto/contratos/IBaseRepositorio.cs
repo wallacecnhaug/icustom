@@ -16,7 +16,7 @@ namespace icustom.contexto.contratos
 
         TEntidade ObterPorId(int id);
 
-        IList<TEntidade> ObterTodos();
+        List<TEntidade> ObterTodos();
 
         void Salvar();
     }

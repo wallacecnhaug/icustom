@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="configs\" />
     <Folder Include="helpers\" />
     <Folder Include="extentions\" />
   </ItemGroup>

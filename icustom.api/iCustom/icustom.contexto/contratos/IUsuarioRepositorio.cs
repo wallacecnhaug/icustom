@@ -7,6 +7,6 @@ namespace icustom.contexto.contratos
 {
     public interface IUsuarioRepositorio : IBaseRepositorio<Usuario>
     {
-
+        Usuario ObterPorLogin(string login, string senha);
     }
 }

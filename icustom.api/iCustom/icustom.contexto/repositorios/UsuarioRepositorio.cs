@@ -13,5 +13,10 @@ namespace icustom.contexto.repositorios
         {
 
         }
+
+        public Usuario ObterPorLogin(string login, string senha)
+        {
+            return Comando.FirstOrDefault(_ => _.Login == login && _.Senha == senha);
+        }
     }
 }
