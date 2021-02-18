@@ -1,4 +1,5 @@
-﻿using icustom.app.api.Helpers;
+﻿using icustom.api.Models;
+using icustom.app.api.Helpers;
 using icustom.dominio.entidades;
 using icustom.servico.contrato;
 using Microsoft.AspNetCore.Authorization;
@@ -26,17 +27,24 @@ namespace icustom.app.api.Controllers
 
         [HttpPost]
         [AutorizacaoAnonima]
-        public async Task<ActionResult<string>> Adicionar(string login, string nome, string senha)
+        public async Task<ActionResult> Adicionar([FromBody] UsuarioModel model)
         {
-            _usuarioServico.Adicionar(
-                new Usuario()
-                {
-                    Login = login,
-                    Nome = nome,
-                    Senha = senha
-                });
+            try
+            {
+                _usuarioServico.Adicionar(
+                    new Usuario()
+                    {
+                        Login = model.login,
+                        Nome = model.nome,
+                        Senha = model.senha
+                    });
 
-            return Ok($"Usuário {login.Trim()}-{nome.Trim()} Cadastrado com sucesso.");
+                return Ok($"Usuário {model.login.Trim()}-{model.nome.Trim()} Cadastrado com sucesso.");
+            }
+            catch (System.Exception ex)
+            {
+                return this.TratarErro(ex);
+            }
         }
 
         [HttpPost]
