@@ -1,6 +1,8 @@
 
+
+
 <div class="">
-  <form class="">
+  <form class="form-login">
     <h1 class="h4 mb-4 text-center">Cadastro de usuário</h1>
     <div class="form-group">
       <label for="usuario.login">Email (será usado como login):</label>
@@ -18,24 +20,22 @@
       <input [(ngModel)]="usuario.senha" type="password" class="form-control" id="usuario.senha" name="senha" placeholder="Digite sua Senha...">
     </div>
 
-    <button type="submit" (click)="adicionar()" class="btn btn-primary">Salvar</button>
+    <button type="button" (click)="adicionar()" class="btn btn-primary">Salvar</button>
 
-    <div class="text-center">
-      <div *ngIf="msgSucesso"  class="alert alert-success close" role="alert">
+      <div *ngIf="msgSucesso" class="alert alert-success close p-3 mb-5" role="alert">
         <button (click)="apagarMensagemSucesso()" type="button" class="text-right close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button><br />
         {{msgSucesso}}
       </div>
 
-      <div *ngIf="msgErro" class="alert alert-danger close" role="alert">
+      <div *ngIf="msgErro" class="alert alert-danger close p-3 mb-5" role="alert">
         <button (click)="apagarMensagemErro()" type="button" class="text-right close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <br />
         {{msgErro}}
       </div>
-    </div>
 
   </form>
 </div>

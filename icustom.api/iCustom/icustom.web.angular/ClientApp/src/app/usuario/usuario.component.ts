@@ -35,7 +35,7 @@ export class UsuarioComponent extends BaseComponent implements OnInit {
           this.msgSucesso = data.toString();
         },
         err => {
-          this.msgErro = err.message;
+          this.msgErro = err.error.toString();
         }
       )
   }
