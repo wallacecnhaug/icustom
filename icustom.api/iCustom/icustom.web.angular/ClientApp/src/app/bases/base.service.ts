@@ -1,22 +1,34 @@
-import { HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { OnInit } from "@angular/core";
+import { Observable } from "rxjs";
+import { Constantes } from "../helpers/Constantes";
 
 export class BaseService implements OnInit {
 
-  constructor() {
+  constructor(
+    protected _http: HttpClient,
+    protected _constantes: Constantes) {
   }
 
   ngOnInit(): void {
-    //this.header = new HttpHeaders().set('content-type', 'application/json');
   }
 
-  //public header: HttpHeaders;
-
-  protected httpOptionsPlain = {
-    headers: new HttpHeaders({
+  protected headers: HttpHeaders =
+    new HttpHeaders({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    })
-  };
+    });
+
+  public Post(_url: string, _body: any): Observable<Response> {
+    return this._http
+      .post<Response>(
+        this._constantes.URL_API + _url, _body, { headers: this.headers });
+  }
+
+  public Get(_url: string, _params: any): Observable<Response> {
+    return this._http
+      .get<Response>(
+        this._constantes.URL_API + _url, { headers: this.headers, params: _params });
+  }
 
 }

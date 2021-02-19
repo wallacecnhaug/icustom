@@ -19,10 +19,10 @@ export class UsuarioComponent extends BaseComponent implements OnInit {
     private _route: ActivatedRoute) {
 
     super();
+    this.usuario = new UsuarioModel();
   }
 
   ngOnInit(): void {
-    this.usuario = new UsuarioModel();
   }
 
   adicionar() {

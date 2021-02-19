@@ -1,7 +1,9 @@
 ﻿using icustom.contexto.configuracoes;
 using icustom.contexto.contratos;
 using icustom.dominio.entidades;
+using icustom.infra.configs;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,9 +12,11 @@ namespace icustom.contexto
 {
     public class iCustomContexto : DbContext, IContexto
     {
-        public iCustomContexto(DbContextOptions options) : base(options)
-        {
+        IConfiguracaoApp _configuracaoApp;
 
+        public iCustomContexto(IConfiguracaoApp configuracaoApp) : base()
+        {
+            _configuracaoApp = configuracaoApp;
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
@@ -24,7 +28,14 @@ namespace icustom.contexto
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("InMemoryICUSTOM");
+            if (_configuracaoApp.GetBancoDados_InMemory())
+            {
+                optionsBuilder.UseInMemoryDatabase("InMemoryICUSTOM");
+            }
+            else
+            {
+                optionsBuilder.UseSqlServer(_configuracaoApp.GetConnectionStringSQLServer());
+            }
 
             base.OnConfiguring(optionsBuilder);
         }

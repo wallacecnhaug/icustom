@@ -9,7 +9,7 @@ namespace icustom.contexto.repositorios
 {
     public class UsuarioRepositorio : BaseRepositorio<Usuario>, IUsuarioRepositorio
     {
-        public UsuarioRepositorio(iCustomContexto contexto) : base(contexto)
+        public UsuarioRepositorio(IContexto contexto) : base(contexto)
         {
 
         }

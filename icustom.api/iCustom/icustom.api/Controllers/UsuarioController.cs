@@ -18,6 +18,10 @@ namespace icustom.app.api.Controllers
             _usuarioServico = usuarioServico;
         }
 
+        /// <summary>
+        /// Lista todos os Usuários existentes no banco de dados.
+        /// </summary>
+        /// <returns>Lista dos dados dos Usuários.</returns>
         [HttpGet]
         [Authorizacao]
         public async Task<List<Usuario>> ListarTodos()
@@ -25,6 +29,11 @@ namespace icustom.app.api.Controllers
             return _usuarioServico.ObterTodos();
         }
 
+        /// <summary>
+        /// Adiciona um Usuário no banco de dados.
+        /// </summary>
+        /// <param name="model">Dados de Usuário para persistência.</param>
+        /// <returns>Mensagem de sucesso ou erro da ação solicitada.</returns>
         [HttpPost]
         [AutorizacaoAnonima]
         public async Task<ActionResult> Adicionar([FromBody] UsuarioModel model)
@@ -39,7 +48,7 @@ namespace icustom.app.api.Controllers
                         Senha = model.senha
                     });
 
-                return Ok($"Usuário {model.login.Trim()}-{model.nome.Trim()} Cadastrado com sucesso.");
+                return Ok($"Usuário {model.nome.Trim()} ({model.login.Trim()}) Cadastrado com sucesso.");
             }
             catch (System.Exception ex)
             {
@@ -47,13 +56,23 @@ namespace icustom.app.api.Controllers
             }
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Obtém autenticação utilizando JWT para um determinado Usuário já salvo em banco de dados.
+        /// </summary>
+        /// <param name="login">Login para autenticação a ser validado.</param>
+        /// <param name="senha">Senha para autenticação a ser validado.</param>
+        /// <returns>Retorna o TOKEN JWT para o usuário solicitado.</returns>
+        [HttpGet]
         [AutorizacaoAnonima]
-        public async Task<ActionResult<string>> Autenticar(string login, string senha)
+        public async Task<ActionResult<string>> ObterAutenticacao(string login, string senha)
         {
             return Ok(_usuarioServico.Autenticar(login, senha));
         }
 
+        /// <summary>
+        /// Realiza uma verificação se o usuário tem um TOKEN válido.
+        /// </summary>
+        /// <returns>Confirmação do token válido.</returns>
         [HttpGet]
         [Authorizacao]
         public async Task<ActionResult<string>> Autenticado()

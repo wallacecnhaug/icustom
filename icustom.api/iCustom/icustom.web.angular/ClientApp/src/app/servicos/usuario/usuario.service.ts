@@ -11,10 +11,10 @@ import { BaseService } from '../../bases/base.service';
 export class UsuarioService extends BaseService implements OnInit {
 
   constructor(
-    private _http: HttpClient,
-    private _constantes: Constantes) {
+    protected _http: HttpClient,
+    protected _constantes: Constantes) {
 
-    super();
+    super(_http, _constantes);
   }
 
     ngOnInit(): void {
@@ -22,9 +22,6 @@ export class UsuarioService extends BaseService implements OnInit {
 
   adicionar(model: UsuarioModel): Observable<Response> {
 
-    return this. _http
-      .post<Response>(
-        this._constantes.URL_API + 'Usuario/Adicionar', 
-        model, this.httpOptionsPlain );
+    return this.Post('Usuario/Adicionar', model);
   }
 }

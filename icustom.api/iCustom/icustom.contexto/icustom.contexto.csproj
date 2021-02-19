@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\icustom.dominio\icustom.dominio.csproj" />
+    <ProjectReference Include="..\icustom.infra\icustom.infra.csproj" />
   </ItemGroup>
 
 </Project>
