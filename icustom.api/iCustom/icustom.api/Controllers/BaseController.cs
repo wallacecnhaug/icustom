@@ -18,7 +18,7 @@ namespace icustom.app.api.Controllers
             erroTratado = BadRequest(ex.Message);
 
             if(ex is NaoEncontradoExceptionBusiness)
-                erroTratado = NotFound(ex.Message);
+                erroTratado = NotFound(ex.Message + ex.InnerException?.Message);
 
             return erroTratado;
         }

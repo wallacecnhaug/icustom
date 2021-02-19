@@ -48,7 +48,7 @@ namespace icustom.app.api.Controllers
                         Senha = model.senha
                     });
 
-                return Ok($"Usuário {model.nome.Trim()} ({model.login.Trim()}) Cadastrado com sucesso.");
+                return Ok($"Usuário {model.nome.Trim()} ({model.login.Trim()}) cadastrado com sucesso.");
             }
             catch (System.Exception ex)
             {

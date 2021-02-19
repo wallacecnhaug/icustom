@@ -20,12 +20,19 @@
 
     <button type="submit" (click)="adicionar()" class="btn btn-primary">Salvar</button>
 
-    <div class="form-group mb-4">
-      <div *ngIf="msgSucesso" (click)="apagarMensagemSucesso()" class="h4 p-3 mb-2 bg-success text-white">
+    <div class="text-center">
+      <div *ngIf="msgSucesso"  class="alert alert-success close" role="alert">
+        <button (click)="apagarMensagemSucesso()" type="button" class="text-right close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button><br />
         {{msgSucesso}}
       </div>
 
-      <div *ngIf="msgErro" (click)="apagarMensagemErro()" class="h4 p-3 mb-2 bg-danger text-white">
+      <div *ngIf="msgErro" class="alert alert-danger close" role="alert">
+        <button (click)="apagarMensagemErro()" type="button" class="text-right close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <br />
         {{msgErro}}
       </div>
     </div>
