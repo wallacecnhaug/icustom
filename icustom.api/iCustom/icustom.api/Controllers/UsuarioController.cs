@@ -1,6 +1,7 @@
 ﻿using icustom.api.Models;
 using icustom.app.api.Helpers;
 using icustom.dominio.entidades;
+using icustom.infra.exceptions;
 using icustom.servico.contrato;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,15 +41,19 @@ namespace icustom.app.api.Controllers
         {
             try
             {
-                _usuarioServico.Adicionar(
-                    new Usuario()
-                    {
-                        Login = model.login,
-                        Nome = model.nome,
-                        Senha = model.senha
-                    });
+                if (model.Valido())
+                {
+                    _usuarioServico.Adicionar(
+                        new Usuario()
+                        {
+                            Login = model.login,
+                            Nome = model.nome,
+                            Senha = model.senha
+                        });
 
-                return Ok($"Usuário {model.nome.Trim()} ({model.login.Trim()}) cadastrado com sucesso.");
+                    return Ok($"Usuário {model.nome.Trim()} ({model.login.Trim()}) cadastrado com sucesso.");
+                }
+                else throw new ExceptionBusiness("Problema ao adicionar usuário: Modelo inválido.");
             }
             catch (System.Exception ex)
             {
@@ -59,14 +64,35 @@ namespace icustom.app.api.Controllers
         /// <summary>
         /// Obtém autenticação utilizando JWT para um determinado Usuário já salvo em banco de dados.
         /// </summary>
-        /// <param name="login">Login para autenticação a ser validado.</param>
-        /// <param name="senha">Senha para autenticação a ser validado.</param>
+        /// <param name="model">Dados para realizar o login.</param>
         /// <returns>Retorna o TOKEN JWT para o usuário solicitado.</returns>
-        [HttpGet]
+        [HttpPost]
         [AutorizacaoAnonima]
-        public async Task<ActionResult<string>> ObterAutenticacao(string login, string senha)
+        public async Task<ActionResult<icustom.api.Models.LoginModel>> Autenticar([FromBody] icustom.api.Models.LoginModel model)
         {
-            return Ok(_usuarioServico.Autenticar(login, senha));
+            try
+            {
+                if (model.Valido())
+                {
+                    string login = model.email;
+                    string senha = model.senha;
+
+                    var token = _usuarioServico.Autenticar(login, senha);
+
+                    return Ok(
+                        new LoginModel()
+                        {
+                            email = login,
+                            token = token
+                        });
+                }
+                else
+                    throw new ExceptionBusiness("Dados para autenticação não foram informados.");
+            }
+            catch (System.Exception ex)
+            {
+                return this.TratarErro(ex);
+            }
         }
 
         /// <summary>

@@ -13,6 +13,16 @@ var BaseService = /** @class */ (function () {
     }
     BaseService.prototype.ngOnInit = function () {
     };
+    Object.defineProperty(BaseService.prototype, "tokenAutenticado", {
+        get: function () {
+            return (sessionStorage.getItem("tokenAutenticado") ? sessionStorage.getItem("tokenAutenticado") : "");
+        },
+        set: function (value) {
+            sessionStorage.setItem("tokenAutenticado", value);
+        },
+        enumerable: false,
+        configurable: true
+    });
     BaseService.prototype.Post = function (_url, _body) {
         return this._http
             .post(this._constantes.URL_API + _url, _body, { headers: this.headers });

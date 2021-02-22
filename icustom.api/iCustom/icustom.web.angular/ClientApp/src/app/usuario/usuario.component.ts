@@ -15,8 +15,7 @@ export class UsuarioComponent extends BaseComponent implements OnInit {
   public usuario: UsuarioModel;
 
   constructor(
-    private _usuarioService: UsuarioService,
-    private _route: ActivatedRoute) {
+    private _usuarioService: UsuarioService) {
 
     super();
     this.usuario = new UsuarioModel();
@@ -35,7 +34,7 @@ export class UsuarioComponent extends BaseComponent implements OnInit {
           this.msgSucesso = data.toString();
         },
         err => {
-          this.msgErro = err.error.toString();
+          this.msgErro = err.message.toString();
         }
       )
   }

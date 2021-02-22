@@ -15,10 +15,12 @@ namespace icustom.app.api.Controllers
         {
             ActionResult erroTratado = null;
 
-            erroTratado = BadRequest($"{ex.Message} - {ex.InnerException?.Message}");
+            string msgErro = $"{ex.Message} {ex.InnerException?.Message}";
+
+            erroTratado = BadRequest(msgErro);
 
             if(ex is NaoEncontradoExceptionBusiness)
-                erroTratado = NotFound(ex.Message + ex.InnerException?.Message);
+                erroTratado = NotFound(msgErro);
 
             return erroTratado;
         }

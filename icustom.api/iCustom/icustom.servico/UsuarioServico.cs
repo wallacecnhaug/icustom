@@ -1,5 +1,6 @@
 ﻿using icustom.contexto.contratos;
 using icustom.dominio.entidades;
+using icustom.infra.exceptions;
 using icustom.servico.contrato;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace icustom.servico
                 token = _autenticacaoServico.GerarToken();
             }
             else
-                throw new KeyNotFoundException("Usuário não encontrado ou senha inválida.");
+                throw new NaoEncontradoExceptionBusiness("Usuário não encontrado ou senha inválida.");
 
             return token;
         }

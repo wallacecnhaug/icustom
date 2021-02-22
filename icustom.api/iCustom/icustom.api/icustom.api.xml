@@ -17,12 +17,11 @@
             <param name="model">Dados de Usuário para persistência.</param>
             <returns>Mensagem de sucesso ou erro da ação solicitada.</returns>
         </member>
-        <member name="M:icustom.app.api.Controllers.UsuarioController.ObterAutenticacao(System.String,System.String)">
+        <member name="M:icustom.app.api.Controllers.UsuarioController.Autenticar(icustom.api.Models.LoginModel)">
             <summary>
             Obtém autenticação utilizando JWT para um determinado Usuário já salvo em banco de dados.
             </summary>
-            <param name="login">Login para autenticação a ser validado.</param>
-            <param name="senha">Senha para autenticação a ser validado.</param>
+            <param name="model">Dados para realizar o login.</param>
             <returns>Retorna o TOKEN JWT para o usuário solicitado.</returns>
         </member>
         <member name="M:icustom.app.api.Controllers.UsuarioController.Autenticado">

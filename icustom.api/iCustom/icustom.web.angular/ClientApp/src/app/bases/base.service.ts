@@ -13,6 +13,15 @@ export class BaseService implements OnInit {
   ngOnInit(): void {
   }
 
+  private _tokenAutenticado: string;
+
+  public get tokenAutenticado(): string {
+    return (sessionStorage.getItem("tokenAutenticado") ? sessionStorage.getItem("tokenAutenticado") : "");
+    }
+    public set tokenAutenticado(value: string) {
+      sessionStorage.setItem("tokenAutenticado", value);
+    }
+
   protected headers: HttpHeaders =
     new HttpHeaders({
       'Accept': 'application/json',

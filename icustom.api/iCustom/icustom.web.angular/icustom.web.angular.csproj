@@ -27,12 +27,14 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\bases\Base.Service.ts" />
     <None Remove="ClientApp\src\app\handlers\app.error.handler.ts" />
+    <None Remove="ClientApp\src\app\models\login.model.ts" />
     <None Remove="ClientApp\src\app\servicos\usuario\usuario.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\bases\base.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\handlers\app.error.handler.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\login.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\usuario.model.ts" />
   </ItemGroup>
 

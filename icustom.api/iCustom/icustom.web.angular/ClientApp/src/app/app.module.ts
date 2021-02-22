@@ -10,13 +10,17 @@ import { HomeComponent } from './home/home.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioService } from './servicos/usuario/usuario.service';
 import { Constantes } from './helpers/Constantes';
+import LoginComponent from './usuario/login/login.component';
+import { LoginService } from './servicos/usuario/login.service';
+import { GuardaRotasService } from './servicos/guarda-rotas.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,11 +28,14 @@ import { Constantes } from './helpers/Constantes';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'login', component: UsuarioComponent },
+      { path: 'usuario', component: UsuarioComponent, canActivate: [GuardaRotasService] },
+      { path: 'login', component: LoginComponent },
     ])
   ],
   providers: [
     UsuarioService,
+    LoginService,
+    GuardaRotasService,
     Constantes
   ],
   bootstrap: [AppComponent]
