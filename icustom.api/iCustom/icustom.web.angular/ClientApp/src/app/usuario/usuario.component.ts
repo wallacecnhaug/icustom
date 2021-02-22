@@ -30,8 +30,8 @@ export class UsuarioComponent extends BaseComponent implements OnInit {
 
     this._usuarioService.adicionar(this.usuario)
       .subscribe(
-        data => {
-          this.msgSucesso = data.toString();
+        response => {
+          this.msgSucesso = response;
         },
         err => {
           this.msgErro = err.message.toString();

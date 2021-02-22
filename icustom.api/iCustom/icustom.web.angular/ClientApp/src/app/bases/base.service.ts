@@ -13,28 +13,21 @@ export class BaseService implements OnInit {
   ngOnInit(): void {
   }
 
-  private _tokenAutenticado: string;
-
-  public get tokenAutenticado(): string {
-    return (sessionStorage.getItem("tokenAutenticado") ? sessionStorage.getItem("tokenAutenticado") : "");
-    }
-    public set tokenAutenticado(value: string) {
-      sessionStorage.setItem("tokenAutenticado", value);
-    }
-
+  protected base_URL = this._constantes.URL_API;
   protected headers: HttpHeaders =
     new HttpHeaders({
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     });
 
-  public Post(_url: string, _body: any): Observable<Response> {
-    return this._http
-      .post<Response>(
-        this._constantes.URL_API + _url, _body, { headers: this.headers });
+  public get tokenAutenticado(): string {
+    return (sessionStorage.getItem("tokenAutenticado") ? sessionStorage.getItem("tokenAutenticado") : "");
+  }
+  public set tokenAutenticado(value: string) {
+    sessionStorage.setItem("tokenAutenticado", value);
   }
 
-  public Get(_url: string, _params: any): Observable<Response> {
+  public Get(_url: string, _params: any): any {
     return this._http
       .get<Response>(
         this._constantes.URL_API + _url, { headers: this.headers, params: _params });

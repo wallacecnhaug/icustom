@@ -52,9 +52,12 @@ export class LoginService extends BaseService implements OnInit {
     localStorage.setItem("manterConectado", value ? "1" : "0");
   }
 
-  autenticar(loginModel: LoginModel): Observable<any> {
-
-    return this.Post("Usuario/Autenticar", loginModel);
+  autenticar(loginModel: LoginModel): Observable<LoginModel> {
+    return this._http
+      .post<LoginModel>(
+        this.base_URL + "Usuario/Autenticar",
+        loginModel,
+        { headers: this.headers });
   }
 
 }

@@ -20,8 +20,11 @@ export class UsuarioService extends BaseService implements OnInit {
     ngOnInit(): void {
   }
 
-  adicionar(model: UsuarioModel): Observable<Response> {
-
-    return this.Post('Usuario/Adicionar', model);
+  adicionar(model: UsuarioModel): Observable<string> {
+    return this._http
+      .post<string>(
+        this.base_URL + "Usuario/Adicionar",
+        model,
+        { headers: this.headers });
   }
 }
