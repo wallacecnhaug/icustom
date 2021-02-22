@@ -28,6 +28,10 @@ var BaseService = /** @class */ (function () {
         return this._http
             .get(this._constantes.URL_API + _url, { headers: this.headers, params: _params });
     };
+    BaseService.prototype.Post = function (url, body) {
+        return this._http
+            .post(this.base_URL + url, body, { headers: this.headers });
+    };
     return BaseService;
 }());
 exports.BaseService = BaseService;

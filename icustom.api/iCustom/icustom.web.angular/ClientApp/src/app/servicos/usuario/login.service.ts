@@ -53,11 +53,14 @@ export class LoginService extends BaseService implements OnInit {
   }
 
   autenticar(loginModel: LoginModel): Observable<LoginModel> {
-    return this._http
-      .post<LoginModel>(
-        this.base_URL + "Usuario/Autenticar",
-        loginModel,
-        { headers: this.headers });
+    //return this._http
+    //  .post<LoginModel>(
+    //    this.base_URL + "Usuario/Autenticar",
+    //    loginModel,
+    //    { headers: this.headers });
+
+    return this.Post("Usuario/Autenticar", loginModel);
+
   }
 
 }

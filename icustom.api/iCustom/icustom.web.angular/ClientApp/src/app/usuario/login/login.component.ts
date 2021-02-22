@@ -54,8 +54,8 @@ export default class LoginComponent extends BaseComponent implements OnInit {
   }
 
   sair() {
-    this._loginService.manterConectado = false;
     this._loginService.loginAutenticado = undefined;
     this._loginService.token = undefined;
+    this._loginService.manterConectado = false;
   }
 }
