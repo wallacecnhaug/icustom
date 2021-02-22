@@ -18,7 +18,7 @@
 
     <div *ngIf="autenticado()">
       <div class="form-group">
-        <label>Você está autenticado como: {{loginAutenticado}}</label>
+        <label class="alert alert-success p-3 mb-5">Você está autenticado como: {{loginAutenticado}}</label>
         <button (click)="sair()" class="btn btn-lg btn-secondary btn-block p-3 mb-5" type="submit">Sair</button>
       </div>
     </div>

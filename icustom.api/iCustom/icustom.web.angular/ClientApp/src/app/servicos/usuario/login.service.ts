@@ -8,6 +8,13 @@ import { LoginModel } from '../../models/login.model';
 @Injectable()
 export class LoginService extends BaseService implements OnInit {
 
+  public get storage(): Storage {
+
+    let _storage = (this.manterConectado ? localStorage : sessionStorage);
+
+    return _storage;
+  }
+
   constructor(
     protected _http: HttpClient,
     protected _constantes: Constantes) {
@@ -15,22 +22,34 @@ export class LoginService extends BaseService implements OnInit {
     super(_http, _constantes);
   }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+  }
+
+  public get token(): string {
+    return (this.storage.getItem("tokenAutenticado") ? this.storage.getItem("tokenAutenticado") : "");
+  }
+
+  public set token(value: string) {
+    this.storage.setItem("tokenAutenticado", value);
   }
 
   public autenticado(): boolean {
     return (this.loginAutenticado == "undefined" || this.loginAutenticado == null) ? false : true;
   }
 
-  private _loginAutenticado: string;
-
   public get loginAutenticado(): string {
-    this._loginAutenticado = sessionStorage.getItem("loginAutenticado");
-    return this._loginAutenticado;
+    return this.storage.getItem("loginAutenticado");
   }
   public set loginAutenticado(value: string) {
-    sessionStorage.setItem("loginAutenticado", value);
-    this._loginAutenticado = value;
+    this.storage.setItem("loginAutenticado", value);
+  }
+
+  public get manterConectado(): boolean {
+    return localStorage.getItem("manterConectado") == "1";
+  }
+
+  public set manterConectado(value: boolean) {
+    localStorage.setItem("manterConectado", value ? "1" : "0");
   }
 
   autenticar(loginModel: LoginModel): Observable<any> {

@@ -13,8 +13,6 @@ export default class LoginComponent extends BaseComponent implements OnInit {
 
   public login: LoginModel;
 
-
-
   constructor(
     private _loginService: LoginService) {
 
@@ -22,7 +20,7 @@ export default class LoginComponent extends BaseComponent implements OnInit {
 
     this.login = new LoginModel();
 
-    let auth = this._loginService.autenticado;
+    this.login.manterAutenticado = this._loginService.manterConectado;
   }
 
   ngOnInit(): void {
@@ -38,12 +36,14 @@ export default class LoginComponent extends BaseComponent implements OnInit {
 
   autenticar() {
 
+    this._loginService.manterConectado = this.login.manterAutenticado;
+
     this._loginService.autenticar(this.login)
       .subscribe(
         response => {
           this.msgSucesso = "Login realizado com sucesso.";
 
-          this.setToken(response.token);
+          this._loginService.token = response.token;
 
           this._loginService.loginAutenticado = response.email;
         },
@@ -54,6 +54,8 @@ export default class LoginComponent extends BaseComponent implements OnInit {
   }
 
   sair() {
+    this._loginService.manterConectado = false;
     this._loginService.loginAutenticado = undefined;
+    this._loginService.token = undefined;
   }
 }
