@@ -1,7 +1,10 @@
 {
   "name": "icustom.mobile.ionic",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular"
 }
