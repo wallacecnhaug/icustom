@@ -21,6 +21,8 @@ export default class LoginComponent extends BaseComponent implements OnInit {
     this.login = new LoginModel();
 
     this.login.manterAutenticado = this._loginService.manterConectado;
+
+    this.apagarMensagens();
   }
 
   ngOnInit(): void {
@@ -54,6 +56,8 @@ export default class LoginComponent extends BaseComponent implements OnInit {
   }
 
   sair() {
+    this.apagarMensagens();
+
     this._loginService.loginAutenticado = undefined;
     this._loginService.token = undefined;
     this._loginService.manterConectado = false;
