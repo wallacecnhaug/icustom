@@ -1,0 +1,31 @@
+<body>
+  <app-nav-menu></app-nav-menu>
+  <div class="container">
+    <router-outlet></router-outlet>
+
+    <div *ngIf="getMsgSucesso() && !getMsgErro()" class="alert alert-success close p-3 mb-5 text-center" role="alert">
+      <button (click)="apagarMensagemSucesso()" type="button" class="text-right close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button><br />
+      {{getMsgSucesso()}}
+    </div>
+
+    <div *ngIf="getMsgErro() && !getMsgSucesso()" class="alert alert-danger close p-3 mb-5 text-center" role="alert">
+      <button (click)="apagarMensagemErro()" type="button" class="text-right close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <br />
+      {{getMsgErro()}}
+    </div>
+
+    <!--<div *ngIf="getMsgSucesso() || getMsgErro()" class="alert close p-3 mb-5" role="alert">
+      <button (click)="apagarMensages()" type="button" class="text-right close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button><br />
+      <span *ngIf="getMsgSucesso()">{{msgSucesso}}</span>
+      <span *ngIf="getMsgErro()">{{msgErro}}</span>
+    </div>-->
+
+
+  </div>
+</body>
