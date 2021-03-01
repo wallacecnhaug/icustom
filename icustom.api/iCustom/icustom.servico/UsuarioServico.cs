@@ -20,10 +20,32 @@ namespace icustom.servico
             _autenticacaoServico = autenticacaoServico;
         }
 
-        public void Adicionar(Usuario usuario)
+        public override void Dispose()
         {
-            _usuarioRepositorio.Adicionar(usuario);
-            _usuarioRepositorio.Salvar();
+            _usuarioRepositorio.Dispose();
+            _usuarioRepositorio = null;
+
+            _autenticacaoServico.Dispose();
+            _autenticacaoServico = null;
+
+            base.Dispose();
+        }
+
+        public bool Adicionar(Usuario usuario)
+        {
+            bool sucesso = false;
+            try
+            {
+                _usuarioRepositorio.Adicionar(usuario);
+                _usuarioRepositorio.Salvar();
+
+                sucesso = true;
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+            return sucesso;
         }
 
         public string Autenticar(string login, string senha)

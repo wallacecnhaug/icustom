@@ -8,7 +8,7 @@ using System.Text;
 
 namespace icustom.contexto.repositorios
 {
-    public abstract class BaseRepositorio<TEntidade> : IBaseRepositorio<TEntidade>
+    public abstract class BaseRepositorio<TEntidade> : IBaseRepositorio<TEntidade>, IDisposable
         where TEntidade : class
     {
         private DbContext _Contexto;
@@ -21,6 +21,14 @@ namespace icustom.contexto.repositorios
         {
             _Contexto = contexto.GetContexto();
             _Comando = _Contexto.Set<TEntidade>();
+        }
+        public virtual void Dispose()
+        {
+            _Comando = null;
+
+            _Contexto.Dispose();
+            _Contexto = null;
+
         }
 
         public void Adicionar(TEntidade entidade)
@@ -53,10 +61,5 @@ namespace icustom.contexto.repositorios
             _Contexto.SaveChanges();
         }
 
-        public virtual void Dispose()
-        {
-            _Contexto.Dispose();
-            _Contexto = null;
-        }
     }
 }

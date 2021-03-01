@@ -21,6 +21,7 @@ namespace icustom.teste.unit.Base
 
         private void ConfigureServices()
         {
+
             var services = new ServiceCollection();
 
             var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
@@ -32,6 +33,8 @@ namespace icustom.teste.unit.Base
 
             configuracaoApp = serviceProvider.GetRequiredService<IConfiguracaoApp>();
             configuracaoApp.SetBancoDados_InMemory(true);
+
+            Constantes.ChaveAutenticacao = configuration["Jwt:Key"];
         }
 
         protected BaseTeste()

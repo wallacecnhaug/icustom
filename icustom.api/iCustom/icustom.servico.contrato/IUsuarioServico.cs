@@ -7,7 +7,7 @@ namespace icustom.servico.contrato
 {
     public interface IUsuarioServico : IBaseServico
     {
-        void Adicionar(Usuario usuario);
+        bool Adicionar(Usuario usuario);
         List<Usuario> ObterTodos();
 
         string Autenticar(string login, string senha);

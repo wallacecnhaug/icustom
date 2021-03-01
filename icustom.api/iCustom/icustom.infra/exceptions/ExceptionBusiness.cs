@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace icustom.infra.exceptions
@@ -13,8 +14,15 @@ namespace icustom.infra.exceptions
 
         }
 
+        protected void GerarLog(string mensagem)
+        {
+            //Utilizar recursos avançados de log - Log4Net - Elastic - etc...
+            Debug.WriteLine(mensagem);
+        }
+
         public ExceptionBusiness(string mensagemErro)
         {
+            this.GerarLog(mensagemErro);
             this._mensagemErro = (!string.IsNullOrEmpty(mensagemErro) ? $"Erro tratado: {mensagemErro} -> Exception.Message: " : "");
         }
 
