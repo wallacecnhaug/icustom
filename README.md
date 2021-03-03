@@ -8,15 +8,16 @@ A intenção não é ter um sistema COMPLETO, mas sim apenas algumas aplicaçõe
 
 O que poderá encontrar de forma simples e objetiva aplicada nesse portifólio: 
 
-- NetCore 
-- Angular 
+- NetCore 2.2
+- Angular 6
 - TypeScript 
 - EntityFramework 
 - Migrations 
 - Injeção de dependência 
-- DDD 
+- DDD
+- TDD
 - SQLServer 
 - Autenticação com JWT 
 - WebAPI 
-- SOLID 
+- S.O.L.I.D. 
 - CleanCode 
