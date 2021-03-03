@@ -34,12 +34,12 @@ namespace icustom.servico.Tests
         {
             _usuarioServico.Adicionar(new Usuario()
             {
-                Login = "xpto_adicionado@gmail.com",
-                Nome = "xpto adicionado",
+                Login = "login_adicionado@gmail.com",
+                Nome = "login adicionado",
                 Senha = "123"
             });
 
-            var usuarioAdicionado = _usuarioServico.ObterTodos().FirstOrDefault(_ => _.Nome.Contains("adicionado"));
+            var usuarioAdicionado = _usuarioServico.ObterTodos().FirstOrDefault(_ => _.Nome == "login adicionado");
 
             Assert.IsNotNull(usuarioAdicionado);
         }
@@ -49,12 +49,12 @@ namespace icustom.servico.Tests
         {
             _usuarioServico.Adicionar(new Usuario()
             {
-                Login = "xpto_autenticacao@gmail.com",
-                Nome = "xpto autenticação",
+                Login = "login_autenticacao@gmail.com",
+                Nome = "login autenticação",
                 Senha = "123"
             });
 
-            var token = _usuarioServico.Autenticar("xpto_autenticacao@gmail.com", "123");
+            var token = _usuarioServico.Autenticar("login_autenticacao@gmail.com", "123");
 
             Assert.IsTrue(!string.IsNullOrEmpty(token));
         }
