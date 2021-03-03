@@ -16,6 +16,7 @@ O que poderá encontrar de forma simples e objetiva aplicada nesse portifólio:
 - Injeção de dependência 
 - DDD
 - TDD
+- Unit Tests: "MSTest" com banco de dados "InMemory"
 - SQLServer 
 - Autenticação com JWT 
 - WebAPI 
