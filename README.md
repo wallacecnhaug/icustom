@@ -9,16 +9,16 @@ A intenção não é ter um sistema COMPLETO, mas sim apenas algumas aplicaçõe
 O que poderá encontrar de forma simples e objetiva aplicada nesse portifólio: 
 
 - NetCore 2.2
+- WebAPI (.NetCore)
 - Angular 6
 - TypeScript 
+- SQLServer 
 - EntityFramework 
 - Migrations 
 - Injeção de dependência 
 - DDD
 - TDD
 - Unit Tests: "MSTest" com banco de dados "InMemory"
-- SQLServer 
 - Autenticação com JWT 
-- WebAPI 
 - S.O.L.I.D. 
 - CleanCode 
