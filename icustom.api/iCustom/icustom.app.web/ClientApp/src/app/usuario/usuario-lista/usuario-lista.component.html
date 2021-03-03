@@ -1,0 +1,33 @@
+
+<div *ngIf="!usuarios">
+  <h1 class="h4 mb-4 text-center">Carregando lista de usuários...</h1>
+</div>
+
+  <div *ngIf="usuarios" class="container">
+    <form class="form-login">
+      <h1 class="h4 mb-4 text-center">Lista de Usuários cadastrados no banco de dados.</h1>
+
+      <table class="table table-info table-striped w-auto center-me">
+
+        <thead>
+          <tr>
+            <th>Login</th>
+            <th>Nome</th>
+            <th>Senha</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr class="" *ngFor="let usuario of usuarios">
+            <td>{{usuario.login}}</td>
+            <td>{{usuario.nome}}</td>
+            <td>{{usuario.senha}}</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+    </form>
+  </div>
+

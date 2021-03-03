@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UsuarioModel } from '../../models/usuario.model';
 import { BaseService } from '../../bases/base.service';
+import { LoginService } from './login.service';
 
 @Injectable()
-export class UsuarioService extends BaseService implements OnInit {
 
+export class UsuarioService extends BaseService implements OnInit {
   constructor(
     protected _http: HttpClient,
     protected _constantes: Constantes) {

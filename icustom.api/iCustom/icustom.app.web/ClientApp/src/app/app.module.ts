@@ -10,9 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioService } from './servicos/usuario/usuario.service';
 import { Constantes } from './helpers/Constantes';
-import LoginComponent from './usuario/login/login.component';
 import { LoginService } from './servicos/usuario/login.service';
 import { GuardaRotasService } from './servicos/guarda-rotas.service';
+import { UsuarioListaComponent } from './usuario/usuario-lista/usuario-lista.component';
+import { UsuarioListaService } from './servicos/usuario/usuario-lista.service';
+import LoginComponent from './usuario/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { GuardaRotasService } from './servicos/guarda-rotas.service';
     NavMenuComponent,
     HomeComponent,
     UsuarioComponent,
+    UsuarioListaComponent,
     LoginComponent
   ],
   imports: [
@@ -28,7 +31,8 @@ import { GuardaRotasService } from './servicos/guarda-rotas.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'usuario', component: UsuarioComponent, canActivate: [GuardaRotasService] },
+      { path: 'usuario', component: UsuarioComponent },
+      { path: 'usuarios', component: UsuarioListaComponent, canActivate: [GuardaRotasService] },
       { path: 'login', component: LoginComponent },
     ])
   ],
@@ -36,6 +40,7 @@ import { GuardaRotasService } from './servicos/guarda-rotas.service';
     UsuarioService,
     LoginService,
     GuardaRotasService,
+    UsuarioListaService,
     Constantes
   ],
   bootstrap: [AppComponent]

@@ -3,7 +3,7 @@ import { OnInit } from "@angular/core";
 export class BaseComponent {
 
   constructor() {
-
+    this.apagarMensagens();
   }
 
   private static _msgSucesso: string;

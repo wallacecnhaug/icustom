@@ -13,7 +13,6 @@ export class Constantes implements OnInit {
   ngOnInit(): void {
   }
 
-
   public get URL_API(): string {
     return this._URL_API;
   }

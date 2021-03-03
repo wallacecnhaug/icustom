@@ -26,9 +26,9 @@ namespace icustom.contexto.repositorios
         {
             _Comando = null;
 
-            _Contexto.Dispose();
-            _Contexto = null;
+            _Contexto?.Dispose();
 
+            _Contexto = null;
         }
 
         public void Adicionar(TEntidade entidade)
