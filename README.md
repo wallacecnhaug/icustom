@@ -1,4 +1,5 @@
 #WallaceCunhaAugusto
+=> Analista de Sistemas .Net Sênior / Líder Técnico / Arquiteto de Sistemas
 
 https://www.linkedin.com/in/wallace-augusto-322ab2101/
 
