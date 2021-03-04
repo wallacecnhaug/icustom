@@ -11,6 +11,7 @@ O que poderá encontrar de forma simples e objetiva aplicada nesse portifólio:
 - NetCore 2.2
 - WebAPI (.NetCore)
 - Angular 6
+- Autenticação com JWT 
 - TypeScript 
 - SQLServer 
 - EntityFramework 
@@ -19,6 +20,6 @@ O que poderá encontrar de forma simples e objetiva aplicada nesse portifólio:
 - DDD
 - TDD
 - Unit Tests: "MSTest" com banco de dados "InMemory"
-- Autenticação com JWT 
+- BDD com SpecFlow
 - S.O.L.I.D. 
 - CleanCode 
