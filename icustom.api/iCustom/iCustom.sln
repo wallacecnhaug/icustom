@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.infra", "icustom.in
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.api", "icustom.api\icustom.api.csproj", "{A9FAD73A-3485-400E-9202-8634C7A1466F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.app.web", "icustom.app.web\icustom.app.web.csproj", "{34080143-6A80-4290-BB8D-AFBD67689BAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "icustom.app.web", "icustom.app.web\icustom.app.web.csproj", "{34080143-6A80-4290-BB8D-AFBD67689BAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "icustom.teste.BDD.specflow", "icustom.teste.BDD.specflow\icustom.teste.BDD.specflow.csproj", "{D967B072-1EDC-4104-AA37-A28CD7099E8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{34080143-6A80-4290-BB8D-AFBD67689BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34080143-6A80-4290-BB8D-AFBD67689BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34080143-6A80-4290-BB8D-AFBD67689BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D967B072-1EDC-4104-AA37-A28CD7099E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D967B072-1EDC-4104-AA37-A28CD7099E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D967B072-1EDC-4104-AA37-A28CD7099E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D967B072-1EDC-4104-AA37-A28CD7099E8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
