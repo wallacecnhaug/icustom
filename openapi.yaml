@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: API para Integração com o Montador GDESSEM
+  description: "API do montador GDESSEM para obtenção de arquivos e informações sobre\
+    \ entradas do montador, saídas do montador, e resultados do modelo DESSEM. A unidadade\
+    \ de execução do montador contendo os dados relevantes (data alvo, hora de referê\
+    ncia, data do PMO, tipo: com rede/sem rede, etc.) -- juntamente com informaçõ\
+    es sobre os arquivos de entrada, saída e resultados -- é denominada <b>Rodada</b>."
+  version: v1
+servers:
+- url: http://integra.ons.org.br/api/dessem
+- url: https://integra.ons.org.br/api/dessem
+security:
+- bearerAuth: []
+paths:
+  /arquivosrodada/{dataRodada}:
+    get:
+      tags:
+      - RodadaDESSEM
+      summary: Recuperar os nomes dos arquivos (decks) de entrada e saída da rodada.
+      description: Retorna os nomes dos arquivos (decks) de entrada e saída da rodada
+        do dia selecionado.
+      operationId: RodadaDESSEM_NomesArquivos
+      parameters:
+      - name: dataRodada
+        in: path
+        description: Data alvo da Roda rodada no formato 'yyyy-mm-dd'.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: date-time
+      responses:
+        "200":
+          description: Nomes dos arquivos da rodada solicitado.
+          content:
+            application/json:
+              schema:
+                type: string
+                format: binary
+                x-content-type: application/json
+        "404":
+          description: Rodada não encontrada para a data alvo informada.
+        default:
+          description: Erro inesperado.
+      x-swagger-router-controller: RodadaDESSEM
+  /arquivosrodada/download:
+    post:
+      tags:
+      - RodadaDESSEM
+      summary: Download de pacote de arquivos.
+      description: "Retorna o pacote .zip contendo os arquivos solicitados. \r\nCaso\
+        \ contenha arquivos de mesmo nome mas de tipos distintos (ex. Entrada e Saida),\
+        \ é criada uma estrutura de diretórios dentro do pacote. Caso contrário, todos\
+        \ os arquivos são colocados na raiz do pacote."
+      operationId: RodadaDESSEM_DownloadPacote
+      requestBody:
+        description: Objeto contendo a data alvo da rodada (formato 'yyyy-mm-dd')
+          e os nomes dos arquivos desejados da rodada.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NomesArquivosRodada'
+        required: true
+      responses:
+        "200":
+          description: Streaming do pacote de arquivos solicitado.
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+                x-content-type: application/zip
+        "400":
+          description: Solicitação mal formatada.
+        "404":
+          description: Rodada ou algum dos arquivos solicitados não encontrada.
+        default:
+          description: Erro inesperado.
+      x-swagger-router-controller: RodadaDESSEM
+components:
+  schemas:
+    NomesArquivosRodada:
+      required:
+      - dataRodada
+      type: object
+      properties:
+        dataRodada:
+          type: string
+          format: date-time
+        entradasMontador:
+          type: array
+          items:
+            type: string
+        saidasMontador:
+          type: array
+          items:
+            type: string
+        resultadosDESSEM:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
