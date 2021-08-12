@@ -1,0 +1,311 @@
+openapi: 3.0.0
+info:
+  version: v1
+  title: API para Integração com o PDPIU.
+  description: >-
+    API do PDPIU para obtenção de dados e informações sobre programação diária
+    de produção.
+paths:
+  /programacao/empresasrepresentadas:
+    get:
+      tags:
+        - Empresa
+      summary: Listar dados das Empresas representadas pelo usuário
+      operationId: Empresa_ListarEmpresasRepresentadas
+      responses:
+        '200':
+          description: Lista de empresas.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmpresaResponse'
+              examples:
+                response:
+                  value:
+                    Empresas:
+                      - Codigo: TS
+                        Nome: ENGIE RS
+                        Sigla: ENGIERS
+                        BDT_Id: GSU
+                        Regiao: 4
+                        RegiaoDescricao: Sul
+                        RegiaoSigla: S
+                      - Codigo: FU
+                        Nome: FURNAS
+                        Sigla: FURNAS
+                        BDT_Id: FUR
+                        Regiao: 3
+                        RegiaoDescricao: Sudeste
+                        RegiaoSigla: SE
+                      - Codigo: BP
+                        Nome: PETROBRAS SE
+                        Sigla: PBR-SE
+                        BDT_Id: PBR
+                        Regiao: 3
+                        RegiaoDescricao: Sudeste
+                        RegiaoSigla: SE
+                    InicioProcessamento: '2021-08-12T16:48:13.1916078-03:00'
+                    TerminoProcessamento: '2021-08-12T16:48:23.1916078-03:00'
+        '400':
+          description: Problema na execução da operação solicidada. <Exception.Message>
+        '401':
+          description: Authorization has been denied for this request.
+      security:
+        - Bearer: []
+  /programacao/usina/ListarUsinasRepresentadas:
+    get:
+      tags:
+        - InsumoPDP
+      summary: Listar Usinas representadas pelo usuário.
+      operationId: InsumoPDP_ListarUsinasRepresentadas
+      parameters:
+        - name: request.codigosEmpresas
+          in: query
+          description: >-
+            (Opcional) Código das Empresas no PDP (Caso não informado retornará
+            todos as usinas relacionadas ao usuário)
+          required: false
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: Lista com os dados das Usinas representadas.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsinaResponse'
+              examples:
+                response:
+                  value:
+                    Usinas:
+                      - Codigo: FUPHID
+                        Nome: PEQUENAS HIDROS
+                        Tipo: UHE
+                        DadosInsumosTotalizados: []
+                      - Codigo: FUPHID - CONV0001
+                        Nome: PEQUENAS HIDROS
+                        Tipo: UHE
+                        Prioridade: 1
+                        DadosInsumosTotalizados: []
+                      - Codigo: FUPHID
+                        Nome: PEQUENAS HIDROS
+                        Tipo: UHE
+                        DadosInsumosTotalizados: []
+                    InicioProcessamento: '2021-08-12T16:48:13.1916078-03:00'
+                    TerminoProcessamento: '2021-08-12T16:48:23.1916078-03:00'
+        '400':
+          description: Problema na execução da operação solicidada. <Exception.Message>
+        '401':
+          description: Authorization has been denied for this request.
+      security:
+        - Bearer: []
+servers:
+- url: http://integra.ons.org.br/api
+- url: https://integra.ons.org.br/api
+components:
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: Autorização via JWT. Adicionar Bearer antes do token.
+      name: Authorization
+      in: header
+  schemas:
+    EmpresaResponse:
+      description: View de EmpresaController
+      required:
+        - Empresas
+        - InicioProcessamento
+        - TerminoProcessamento
+      type: object
+      properties:
+        Empresas:
+          description: Dados de Empresas
+          type: array
+          items:
+            $ref: '#/components/schemas/Empresa'
+        InicioProcessamento:
+          format: date-time
+          description: Momento em que iniciou o processamento de uma requisição.
+          type: string
+        TerminoProcessamento:
+          format: date-time
+          description: Momento de término de processamento de uma requisição.
+          type: string
+    Empresa:
+      required:
+        - Codigo
+        - Nome
+        - Sigla
+        - BDT_Id
+      type: object
+      properties:
+        Codigo:
+          type: string
+        Nome:
+          type: string
+        Sigla:
+          type: string
+        BDT_Id:
+          type: string
+        Regiao:
+          enum:
+            - SIN
+            - 'N'
+            - NE
+            - SE
+            - S
+          type: string
+        RegiaoDescricao:
+          type: string
+          readOnly: true
+        RegiaoSigla:
+          type: string
+          readOnly: true
+    InsumoUsinaResponse:
+      description: Visão de InsumoController Resumido
+      required:
+        - Usinas
+        - InicioProcessamento
+        - TerminoProcessamento
+      type: object
+      properties:
+        Usinas:
+          description: Lista de Usinas da Empresa
+          type: array
+          items:
+            $ref: '#/components/schemas/Usina'
+        InicioProcessamento:
+          format: date-time
+          description: Momento em que iniciou o processamento de uma requisição.
+          type: string
+        TerminoProcessamento:
+          format: date-time
+          description: Momento de término de processamento de uma requisição.
+          type: string
+    Usina:
+      required:
+        - Codigo
+        - Nome
+      type: object
+      properties:
+        Codigo:
+          type: string
+        Nome:
+          type: string
+        Tipo:
+          type: string
+        Prioridade:
+          format: int32
+          type: integer
+        DadosInsumosTotalizados:
+          type: array
+          items:
+            $ref: '#/components/schemas/DadoInsumoTotal'
+        DadoInsumoPatamar:
+          type: array
+          items:
+            $ref: '#/components/schemas/DadoInsumoPatamar'
+    DadoInsumoTotal:
+      required:
+        - DataPDP
+        - TipoInsumo
+        - TipoInsumoDescricao
+      type: object
+      properties:
+        DataPDP:
+          type: string
+        TipoInsumo:
+          enum:
+            - Geracao
+            - Exportacao
+            - OfertaExportacao
+            - Comentarios_DESSEM
+          type: string
+        TipoInsumoDescricao:
+          type: string
+          readOnly: true
+        ValorTotal_EMP:
+          format: int32
+          type: integer
+        ValorTotal_PRO:
+          format: int32
+          type: integer
+        ValorTotal_PRE:
+          format: int32
+          type: integer
+        ValorTotal_SUP:
+          format: int32
+          type: integer
+        Valor_Comentario_SugeridoAgente:
+          format: int32
+          type: integer
+        Valor_OfertaExportacao_SugeridoAgente:
+          format: int32
+          type: integer
+        Valor_OfertaExportacao_AnalisadoONS:
+          format: int32
+          type: integer
+        DadosInsumosPatamares:
+          type: array
+          items:
+            $ref: '#/components/schemas/DadoInsumoPatamar'
+    DadoInsumoPatamar:
+      required:
+        - DataPDP
+        - PatamarNumero
+        - PatamarHora
+      type: object
+      properties:
+        DataPDP:
+          type: string
+        PatamarNumero:
+          format: int32
+          type: integer
+        PatamarHora:
+          type: string
+          readOnly: true
+        PatamarValor_EMP:
+          format: int32
+          type: integer
+        PatamarValor_PRO:
+          format: int32
+          type: integer
+        PatamarValor_PRE:
+          format: int32
+          type: integer
+        PatamarValor_SUP:
+          format: int32
+          type: integer
+        PatamarValor_Comentario_SugeridoAgente:
+          format: int32
+          type: integer
+        PatamarValor_OfertaExportacao_SugeridoAgente:
+          format: int32
+          type: integer
+        PatamarValor_OfertaExportacao_AnalisadoONS:
+          format: int32
+          type: integer
+    UsinaResponse:
+      description: View de EmpresaController
+      required:
+        - Usinas
+        - InicioProcessamento
+        - TerminoProcessamento
+      type: object
+      properties:
+        Usinas:
+          description: Dados de Empresas
+          type: array
+          items:
+            $ref: '#/components/schemas/Usina'
+        InicioProcessamento:
+          format: date-time
+          description: Momento em que iniciou o processamento de uma requisição.
+          type: string
+        TerminoProcessamento:
+          format: date-time
+          description: Momento de término de processamento de uma requisição.
+          type: string
