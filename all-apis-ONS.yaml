@@ -6,3 +6,4 @@ metadata:
 spec:
   targets:
     - https://github.com/wallacecnhaug/icustom/blob/master/api-GDESSEM.yaml
+    - https://github.com/wallacecnhaug/icustom/blob/master/api-PDP.yaml
