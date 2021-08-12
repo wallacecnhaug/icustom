@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: GDESSEM
@@ -6,10 +6,9 @@ metadata:
   tags:
     - gdessem
     - rest
- 
 spec:
-  type: OpenAPI
-  lifecycle: Produção
-  owner: ONS-Arquitetura-GDESSEM
+  type: openapi
+  lifecycle: production
+  owner: team-a
   definition:
     $text: https://github.com/wallacecnhaug/icustom/blob/master/openapi.yaml
