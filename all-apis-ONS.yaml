@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Location
+metadata:
+  name: APIs ONS
+  description: Coleção de todas as APIs disponíveis no ONS.
+spec:
+  targets:
+    - https://github.com/wallacecnhaug/icustom/blob/master/api-GDESSEM.yaml
