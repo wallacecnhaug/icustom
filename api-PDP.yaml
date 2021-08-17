@@ -12,4 +12,4 @@ spec:
   lifecycle: production
   owner: team-a
   definition:
-    $text: https://github.com/wallacecnhaug/icustom/blob/master/openapi-pdp.yaml
+    $text: https://dev.azure.com/onsvsts/_git/Arquitetura%20de%20Dados?path=%2FREADME.md
